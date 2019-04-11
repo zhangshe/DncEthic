@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="SqlSugar\" />
+    <Folder Include="Entity\" />
     <Folder Include="Enum\" />
   </ItemGroup>
 
