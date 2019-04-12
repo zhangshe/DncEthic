@@ -335,7 +335,7 @@ namespace {Namespace}
         }
         //读写锁，当资源处于写入模式时，其他线程写入需要等待本次写入结束之后才能继续写入
         static ReaderWriterLockSlim LogWriteLock = new ReaderWriterLockSlim();
-        static int LogCount = 100;
+        //static int LogCount = 100;
         static int WritedCount = 0;
         static int FailedCount = 0;
         static void OutSql2Log(string sql, string pars)

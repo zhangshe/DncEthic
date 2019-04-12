@@ -42,22 +42,31 @@ namespace DncEthic.WebAPI
             #region 添加Swagger
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info
+                c.SwaggerDoc("G1", new Info
                 {
-                    Version = "v1.1.0",
-                    Title = "接口文档",
-                    Description = "接口文档-平台",
+                    Version = "G1",
+                    Title = "API文档",
+                    Description = "API文档-平台",
                     TermsOfService = "",
                     Contact = new Swashbuckle.AspNetCore.Swagger.Contact { Name = "Maverick", Email = "1312719913@qq.com", Url = "http://www.cnblogs.com/" }
                 });
-                c.SwaggerDoc("v2", new Info
+                c.SwaggerDoc("G2", new Info
                 {
-                    Version = "v1.1.0",
-                    Title = "接口文档",
-                    Description = "接口文档-业务",
+                    Version = "G2",
+                    Title = "API文档",
+                    Description = "API文档-业务",
                     TermsOfService = "",
                     Contact = new Swashbuckle.AspNetCore.Swagger.Contact { Name = "Maverick", Email = "1312719913@qq.com", Url = "http://www.cnblogs.com/" }
                 });
+                c.SwaggerDoc("Default", new Info
+                {
+                    Version = "Default",
+                    Title = "API文档",
+                    Description = "API文档-默认",
+                    TermsOfService = "",
+                    Contact = new Swashbuckle.AspNetCore.Swagger.Contact { Name = "Maverick", Email = "1312719913@qq.com", Url = "http://www.cnblogs.com/" }
+                });
+              
                 //添加读取注释服务
                 var basePath = AppDomain.CurrentDomain.BaseDirectory;
                 var apiXmlPath = Path.Combine(basePath, "DncEthic.WebAPI.xml");
@@ -127,8 +136,9 @@ namespace DncEthic.WebAPI
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v2/swagger.json", "接口文档-业务");//业务接口文档首先显示
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "接口文档-平台");//基础接口文档放后面后显示
+                c.SwaggerEndpoint("/swagger/G2/swagger.json", "API文档-业务");//业务接口文档首先显示
+                c.SwaggerEndpoint("/swagger/G1/swagger.json", "API文档-平台");//基础接口文档放后面后显示
+                c.SwaggerEndpoint("/swagger/Default/swagger.json", "API文档-默认");
                 c.RoutePrefix = string.Empty;//设置后直接输入IP就可以进入接口文档
             });
             #endregion

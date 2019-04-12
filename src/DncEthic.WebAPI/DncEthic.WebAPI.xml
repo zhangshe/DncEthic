@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DncEthic.WebAPI</name>
+    </assembly>
+    <members>
+        <member name="T:DncEthic.WebAPI.Controllers.ValuesController">
+            <summary>
+            测试API
+            </summary>
+        </member>
+        <member name="M:DncEthic.WebAPI.Controllers.ValuesController.Get">
+            <summary>
+            GET api/values
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DncEthic.WebAPI.Controllers.ValuesController.Get(System.Int32)">
+            <summary>
+            GET api/values/5
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DncEthic.WebAPI.Controllers.ValuesController.Post(System.String)">
+            <summary>
+            POST api/values
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:DncEthic.WebAPI.Controllers.ValuesController.Put(System.Int32,System.String)">
+            <summary>
+            PUT api/values/5
+            </summary>
+            <param name="id"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:DncEthic.WebAPI.Controllers.ValuesController.Delete(System.Int32)">
+            <summary>
+            DELETE api/values/5
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="T:DncEthic.WebAPI.Program">
+            <summary>
+            程序入口
+            </summary>
+        </member>
+        <member name="M:DncEthic.WebAPI.Program.Main(System.String[])">
+            <summary>
+            主方法
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:DncEthic.WebAPI.Program.CreateWebHostBuilder(System.String[])">
+            <summary>
+            创建程序
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DncEthic.WebAPI.Startup">
+            <summary>
+            配置的服务和应用程序的请求管道
+            </summary>
+        </member>
+        <member name="M:DncEthic.WebAPI.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            应用程序启动
+            </summary>
+            <param name="configuration">配置项</param>
+        </member>
+        <member name="P:DncEthic.WebAPI.Startup.Configuration">
+            <summary>
+            配置信息
+            </summary>
+        </member>
+        <member name="M:DncEthic.WebAPI.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            服务注册配置应用程序的服务This method gets called by the runtime. Use this method to add services to the container.
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:DncEthic.WebAPI.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+            <summary>
+            创建应用程序的请求处理管道This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+    </members>
+</doc>
