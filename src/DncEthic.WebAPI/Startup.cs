@@ -6,10 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
+using Swashbuckle.AspNetCore.SwaggerGen;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 
 namespace DncEthic.WebAPI
 {
@@ -64,7 +66,29 @@ namespace DncEthic.WebAPI
                     // 按相对路径排序
                     c.OrderActionsBy(o => o.RelativePath);
                 });
-
+                c.DocInclusionPredicate((docName, description) =>
+                {
+                    description.TryGetMethodInfo(out MethodInfo mi);
+                    var attr = mi.DeclaringType.GetCustomAttribute<ApiExplorerSettingsAttribute>();
+                    if (attr != null)
+                    {
+                        return attr.GroupName == docName;
+                    }
+                    else
+                    {
+                        return docName == "Default";
+                    }
+                    //if (!description.TryGetMethodInfo(out MethodInfo mi)) return false;
+                    //var groupName = mi.DeclaringType.GetCustomAttributes(true).OfType<ApiExplorerSettingsAttribute>().Select(attr => attr.GroupName);
+                    //if (groupName.FirstOrDefault() == null)
+                    //{
+                    //    return docName == "Default";
+                    //}
+                    //else
+                    //{
+                    //    return groupName.Any(g => g.ToString() == docName);
+                    //}
+                });
                 //添加读取注释服务
                 var apiXmlPath = Path.Combine(basePath, "DncEthic.WebAPI.xml");//控制器层注释（true表示显示控制器注释）
                 c.IncludeXmlComments(apiXmlPath, true);
