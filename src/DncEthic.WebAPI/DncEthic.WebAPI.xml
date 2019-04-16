@@ -75,6 +75,11 @@
             配置信息
             </summary>
         </member>
+        <member name="F:DncEthic.WebAPI.Startup.ApiName">
+            <summary>
+            API名称
+            </summary>
+        </member>
         <member name="M:DncEthic.WebAPI.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>
             服务注册配置应用程序的服务This method gets called by the runtime. Use this method to add services to the container.
