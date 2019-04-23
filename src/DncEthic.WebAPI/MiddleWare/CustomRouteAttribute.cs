@@ -31,7 +31,7 @@ namespace DncEthic.WebAPI.MiddleWare
         /// <param name="version"></param>
         /// <param name="groupName"></param>
         /// <param name="actionName"></param>
-        public CustomRouteAttribute(ApiVersions version, ApiGroups groupName, string actionName = "") : base($"/api/{version.ToString()}/[controller]/{actionName}")
+        public CustomRouteAttribute(ApiVersions version, ApiGroups groupName, string actionName = "[action]") : base($"/api/{version.ToString()}/[controller]/{actionName}")
         {
             GroupName = groupName.ToString();
         }

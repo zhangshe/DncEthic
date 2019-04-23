@@ -12,9 +12,10 @@ namespace DncEthic.WebAPI.Controllers
     /// <summary>
     /// 测试API
     /// </summary>
-    //[CustomRoute(ApiVersions.V2, ApiGroups.Platform)]
-    //[ApiExplorerSettings(GroupName = "Platform")]
-    [Route("api/[controller]")]
+
+    [ApiExplorerSettings(GroupName = "Platform")]
+    //[Route("api/[controller]/[action]")]
+    [CustomRoute(ApiVersions.V2, ApiGroups.Platform)]
     [ApiController]
 
     public class ValuesController : ControllerBase
@@ -23,8 +24,8 @@ namespace DncEthic.WebAPI.Controllers
         /// GET api/values
         /// </summary>
         /// <returns></returns>
-        [ApiExplorerSettings(GroupName = "Platform")]
-        //[CustomRoute(ApiVersions.V2,ApiGroups.Platform)]
+        //[ApiExplorerSettings(GroupName = "Platform")]
+        [CustomRoute(ApiVersions.V1,ApiGroups.Platform)]
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
@@ -36,8 +37,10 @@ namespace DncEthic.WebAPI.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [ApiExplorerSettings(GroupName = "Business")]
-        [HttpGet("{id}")]
+        //[ApiExplorerSettings(GroupName = "Business")]
+        [CustomRoute(ApiVersions.V2, ApiGroups.Platform)]
+        //[HttpGet("{id}")]
+        [HttpGet]
         public ActionResult<string> Get(int id)
         {
             return "value";
@@ -47,9 +50,10 @@ namespace DncEthic.WebAPI.Controllers
         /// POST api/values
         /// </summary>
         /// <param name="value"></param>
-        [ApiExplorerSettings(GroupName = "Default")]
+
         [HttpPost]
         [AllowAnonymous]
+        [CustomRoute(ApiVersions.V2, ApiGroups.Business)]
         public void Post([FromBody] string value)
         {
         }
@@ -59,7 +63,7 @@ namespace DncEthic.WebAPI.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <param name="value"></param>
-        //[ApiExplorerSettings(GroupName = "G1")]
+        [ApiExplorerSettings(GroupName = "Default")]
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {

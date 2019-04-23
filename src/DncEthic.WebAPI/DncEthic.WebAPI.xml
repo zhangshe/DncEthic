@@ -41,6 +41,30 @@
             </summary>
             <param name="id"></param>
         </member>
+        <member name="T:DncEthic.WebAPI.MiddleWare.CustomRouteAttribute">
+            <summary>
+            自定义路由 /api/{version}/[controler]/[action]
+            </summary>
+        </member>
+        <member name="P:DncEthic.WebAPI.MiddleWare.CustomRouteAttribute.GroupName">
+            <summary>
+            分组名称,是来实现接口 IApiDescriptionGroupNameProvider
+            </summary>
+        </member>
+        <member name="M:DncEthic.WebAPI.MiddleWare.CustomRouteAttribute.#ctor(System.String)">
+            <summary>
+            自定义路由构造函数，继承基类路由
+            </summary>
+            <param name="actionName"></param>
+        </member>
+        <member name="M:DncEthic.WebAPI.MiddleWare.CustomRouteAttribute.#ctor(DncEthic.Core.Enums.ApiVersions,DncEthic.Core.Enums.ApiGroups,System.String)">
+            <summary>
+            自定义版本+路由构造函数，继承基类路由
+            </summary>
+            <param name="version"></param>
+            <param name="groupName"></param>
+            <param name="actionName"></param>
+        </member>
         <member name="T:DncEthic.WebAPI.Program">
             <summary>
             程序入口
@@ -84,7 +108,7 @@
             <summary>
             服务注册配置应用程序的服务This method gets called by the runtime. Use this method to add services to the container.
             </summary>
-            <param name="services"></param>
+            <param name="services">服务</param>
         </member>
         <member name="M:DncEthic.WebAPI.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
             <summary>

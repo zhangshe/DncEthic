@@ -39,7 +39,7 @@ namespace DncEthic.WebAPI
         /// <summary>
         /// 服务注册配置应用程序的服务This method gets called by the runtime. Use this method to add services to the container.
         /// </summary>
-        /// <param name="services"></param>
+        /// <param name="services">服务</param>
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -66,29 +66,35 @@ namespace DncEthic.WebAPI
                     // 按相对路径排序
                     c.OrderActionsBy(o => o.RelativePath);
                 });
-                c.DocInclusionPredicate((docName, description) =>
-                {
-                    description.TryGetMethodInfo(out MethodInfo mi);
-                    var attr = mi.DeclaringType.GetCustomAttribute<ApiExplorerSettingsAttribute>();
-                    if (attr != null)
-                    {
-                        return attr.GroupName == docName;
-                    }
-                    else
-                    {
-                        return docName == "Default";
-                    }
-                    //if (!description.TryGetMethodInfo(out MethodInfo mi)) return false;
-                    //var groupName = mi.DeclaringType.GetCustomAttributes(true).OfType<ApiExplorerSettingsAttribute>().Select(attr => attr.GroupName);
-                    //if (groupName.FirstOrDefault() == null)
-                    //{
-                    //    return docName == "Default";
-                    //}
-                    //else
-                    //{
-                    //    return groupName.Any(g => g.ToString() == docName);
-                    //}
-                });
+                #region 获取接口描述并赋默认值（废弃）
+                //c.DocInclusionPredicate((docName, description) =>
+                //{
+                //    description.TryGetMethodInfo(out MethodInfo mi);
+
+                //    var attr = mi.DeclaringType.GetCustomAttribute<ApiExplorerSettingsAttribute>();
+                //    if (attr != null)
+                //    {
+                //        return attr.GroupName == docName;
+                //    }
+                //    else {
+                //        return attr.GroupName == "Default";
+                //    }
+                //    //else if(string.IsNullOrEmpty(groupName.ToString()))
+                //    //{
+                //    //    return docName == "Default";
+                //    //}
+                //    //if (!description.TryGetMethodInfo(out MethodInfo mi)) return false;
+                //    //var groupName = mi.DeclaringType.GetCustomAttributes(true).OfType<ApiExplorerSettingsAttribute>().Select(attr => attr.GroupName);
+                //    //if (groupName.FirstOrDefault() == null)
+                //    //{
+                //    //    return docName == "Default";
+                //    //}
+                //    //else
+                //    //{
+                //    //    return groupName.Any(g => g.ToString() == docName);
+                //    //}
+                //});
+                #endregion
                 //添加读取注释服务
                 var apiXmlPath = Path.Combine(basePath, "DncEthic.WebAPI.xml");//控制器层注释（true表示显示控制器注释）
                 c.IncludeXmlComments(apiXmlPath, true);
@@ -162,7 +168,7 @@ namespace DncEthic.WebAPI
                 //c.SwaggerEndpoint("/swagger/Default/swagger.json", "API文档-默认");
                 //c.RoutePrefix = string.Empty;//设置后直接输入IP就可以进入接口文档
                 var enumGroup = typeof(ApiGroups);
-                //根据版本名称倒序 遍历展示
+                //根据分组名称倒序遍历展示
                 enumGroup.GetEnumNames().OrderByDescending(p=> Convert.ToInt32(Enum.Parse(enumGroup, p))).ToList().ForEach(name =>
                 {
                     var value = Convert.ToInt32(Enum.Parse(enumGroup, name));
