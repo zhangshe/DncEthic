@@ -13,9 +13,9 @@ namespace DncEthic.WebAPI.Controllers
     /// 测试API
     /// </summary>
 
-    [ApiExplorerSettings(GroupName = "Platform")]
-    //[Route("api/[controller]/[action]")]
-    [CustomRoute(ApiVersions.V2, ApiGroups.Platform)]
+    //[ApiExplorerSettings(GroupName = "Platform")]
+    [Route("api/[controller]/[action]")]
+    //[CustomRoute(ApiVersions.V2, ApiGroups.Platform)]
     [ApiController]
 
     public class ValuesController : ControllerBase
