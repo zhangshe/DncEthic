@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DncEthic.Core.Enums;
-using DncEthic.WebAPI.MiddleWare;
+using DncEthic.WebAPI.SwaggerHelper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

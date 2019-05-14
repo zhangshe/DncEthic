@@ -1,7 +1,10 @@
 ﻿using System.ComponentModel;
 
-namespace DncEthic.Core.Enums
+namespace DncEthic.WebAPI.SwaggerHelper
 {
+    /// <summary>
+    /// API版本
+    /// </summary>
     public enum ApiVersions
     {
         /// <summary>

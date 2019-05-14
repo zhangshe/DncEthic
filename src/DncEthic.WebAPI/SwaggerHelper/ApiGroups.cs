@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace DncEthic.Core.Enums
+namespace DncEthic.WebAPI.SwaggerHelper
 {
     /// <summary>
     /// API分组

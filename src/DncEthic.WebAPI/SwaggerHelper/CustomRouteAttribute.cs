@@ -1,9 +1,9 @@
-﻿using DncEthic.Core.Enums;
+﻿
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using System;
 
-namespace DncEthic.WebAPI.MiddleWare
+namespace DncEthic.WebAPI.SwaggerHelper
 {
     /// <summary>
     /// 自定义路由 /api/{version}/[controler]/[action]
