@@ -41,29 +41,233 @@
             </summary>
             <param name="id"></param>
         </member>
-        <member name="T:DncEthic.WebAPI.MiddleWare.CustomRouteAttribute">
+        <member name="T:DncEthic.WebAPI.Filter.GlobalExceptionFilter">
             <summary>
-            自定义路由 /api/{version}/[controler]/[action]
+            全局异常过滤器
             </summary>
         </member>
-        <member name="P:DncEthic.WebAPI.MiddleWare.CustomRouteAttribute.GroupName">
+        <member name="M:DncEthic.WebAPI.Filter.GlobalExceptionFilter.#ctor(Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
             <summary>
-            分组名称,是来实现接口 IApiDescriptionGroupNameProvider
+            构造函数
+            </summary>
+            <param name="env"></param>
+        </member>
+        <member name="M:DncEthic.WebAPI.Filter.GlobalExceptionFilter.OnException(Microsoft.AspNetCore.Mvc.Filters.ExceptionContext)">
+            <summary>
+            异常过滤器
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:DncEthic.WebAPI.Filter.GlobalExceptionFilter.ErrorLog(System.String,System.Exception)">
+            <summary>
+            自定义返回格式
+            </summary>
+            <param name="throwMsg"></param>
+            <param name="ex"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DncEthic.WebAPI.Filter.InternalServerErrorObjectResult">
+            <summary>
+            异常码
             </summary>
         </member>
-        <member name="M:DncEthic.WebAPI.MiddleWare.CustomRouteAttribute.#ctor(System.String)">
+        <member name="M:DncEthic.WebAPI.Filter.InternalServerErrorObjectResult.#ctor(System.Object)">
             <summary>
-            自定义路由构造函数，继承基类路由
+            异常错误码
             </summary>
-            <param name="actionName"></param>
+            <param name="value"></param>
         </member>
-        <member name="M:DncEthic.WebAPI.MiddleWare.CustomRouteAttribute.#ctor(DncEthic.Core.Enums.ApiVersions,DncEthic.Core.Enums.ApiGroups,System.String)">
+        <member name="T:DncEthic.WebAPI.Filter.JsonErrorResponse">
             <summary>
-            自定义版本+路由构造函数，继承基类路由
+            返回错误信息
             </summary>
-            <param name="version"></param>
-            <param name="groupName"></param>
-            <param name="actionName"></param>
+        </member>
+        <member name="P:DncEthic.WebAPI.Filter.JsonErrorResponse.Message">
+            <summary>
+            生产环境的消息
+            </summary>
+        </member>
+        <member name="P:DncEthic.WebAPI.Filter.JsonErrorResponse.DevelopmentMessage">
+            <summary>
+            开发环境的消息
+            </summary>
+        </member>
+        <member name="T:DncEthic.WebAPI.Log.LogEntity">
+            <summary>
+            日志模型
+            </summary>
+        </member>
+        <member name="P:DncEthic.WebAPI.Log.LogEntity.S_Id">
+            <summary>
+            主键
+            </summary>
+        </member>
+        <member name="P:DncEthic.WebAPI.Log.LogEntity.Application">
+            <summary>
+            应用名称
+            </summary>
+        </member>
+        <member name="P:DncEthic.WebAPI.Log.LogEntity.Level">
+            <summary>
+            级别  Trace|Debug|Info|Warn|Error|Fatal
+            </summary>
+        </member>
+        <member name="P:DncEthic.WebAPI.Log.LogEntity.OperatingTime">
+            <summary>
+            操作时间
+            </summary>
+        </member>
+        <member name="P:DncEthic.WebAPI.Log.LogEntity.IpAddress">
+            <summary>
+            IP地址
+            </summary>
+        </member>
+        <member name="P:DncEthic.WebAPI.Log.LogEntity.OperateUser">
+            <summary>
+            操作人
+            </summary>
+        </member>
+        <member name="P:DncEthic.WebAPI.Log.LogEntity.Logger">
+            <summary>
+            记录器的名字
+            </summary>
+        </member>
+        <member name="P:DncEthic.WebAPI.Log.LogEntity.CallSite">
+            <summary>
+            类名称、方法名称和相关信息的源信息
+            </summary>
+        </member>
+        <member name="P:DncEthic.WebAPI.Log.LogEntity.RequestUrl">
+            <summary>
+            请求URL
+            </summary>
+        </member>
+        <member name="P:DncEthic.WebAPI.Log.LogEntity.ActionName">
+            <summary>
+            方法名
+            </summary>
+        </member>
+        <member name="P:DncEthic.WebAPI.Log.LogEntity.Message">
+            <summary>
+            消息
+            </summary>
+        </member>
+        <member name="P:DncEthic.WebAPI.Log.LogEntity.ExceptionInfo">
+            <summary>
+            异常信息
+            </summary>
+        </member>
+        <member name="P:DncEthic.WebAPI.Log.LogEntity.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="T:DncEthic.WebAPI.Log.LogLock">
+            <summary>
+            锁日志
+            </summary>
+        </member>
+        <member name="M:DncEthic.WebAPI.Log.LogLock.OutSql2Log(System.String,System.String[])">
+            <summary>
+            输出sql到文件
+            </summary>
+            <param name="filename"></param>
+            <param name="dataParas"></param>
+        </member>
+        <member name="M:DncEthic.WebAPI.Log.LogLock.ReadLog(System.String,System.Text.Encoding)">
+            <summary>
+            读日志
+            </summary>
+            <param name="Path"></param>
+            <param name="encode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DncEthic.WebAPI.Log.LogLock.GetLogData">
+            <summary>
+            获取日志数据
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DncEthic.WebAPI.Log.LogInfo">
+            <summary>
+            日志信息
+            </summary>
+        </member>
+        <member name="P:DncEthic.WebAPI.Log.LogInfo.Datetime">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DncEthic.WebAPI.Log.LogInfo.Content">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DncEthic.WebAPI.Log.LogInfo.IP">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DncEthic.WebAPI.Log.LogInfo.LogColor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DncEthic.WebAPI.Log.LogInfo.Import">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:DncEthic.WebAPI.Log.NLogger">
+            <summary>
+            日志操作类
+            </summary>
+        </member>
+        <member name="F:DncEthic.WebAPI.Log.NLogger.DefaultUser">
+            <summary>
+            数据错误无法获取用户时使用
+            </summary>
+        </member>
+        <member name="F:DncEthic.WebAPI.Log.NLogger.DefaultIP">
+            <summary>
+            默认地址
+            </summary>
+        </member>
+        <member name="M:DncEthic.WebAPI.Log.NLogger.Debug(System.String)">
+            <summary>
+            调试
+            </summary>
+            <param name="debug"></param>
+        </member>
+        <member name="M:DncEthic.WebAPI.Log.NLogger.Info(System.String)">
+            <summary>
+            信息
+            </summary>
+            <param name="info"></param>
+        </member>
+        <member name="M:DncEthic.WebAPI.Log.NLogger.Warn(System.String)">
+            <summary>
+            警告
+            </summary>
+            <param name="warn"></param>
+        </member>
+        <member name="M:DncEthic.WebAPI.Log.NLogger.Error(System.String)">
+            <summary>
+            错误
+            </summary>
+            <param name="error"></param>
+        </member>
+        <member name="M:DncEthic.WebAPI.Log.NLogger.Fatal(System.String)">
+            <summary>
+            严重错误
+            </summary>
+            <param name="fatal"></param>
+        </member>
+        <member name="M:DncEthic.WebAPI.Log.NLogger.Trace(System.String)">
+            <summary>
+            跟踪
+            </summary>
+            <param name="trace"></param>
         </member>
         <member name="T:DncEthic.WebAPI.Program">
             <summary>
@@ -116,6 +320,65 @@
             </summary>
             <param name="app"></param>
             <param name="env"></param>
+        </member>
+        <member name="T:DncEthic.WebAPI.SwaggerHelper.ApiGroups">
+            <summary>
+            API分组
+            </summary>
+        </member>
+        <member name="F:DncEthic.WebAPI.SwaggerHelper.ApiGroups.Default">
+            <summary>
+            API文档-未分组
+            </summary>
+        </member>
+        <member name="F:DncEthic.WebAPI.SwaggerHelper.ApiGroups.Platform">
+            <summary>
+            API文档-平台
+            </summary>
+        </member>
+        <member name="F:DncEthic.WebAPI.SwaggerHelper.ApiGroups.Business">
+            <summary>
+            API文档-业务
+            </summary>
+        </member>
+        <member name="T:DncEthic.WebAPI.SwaggerHelper.ApiVersions">
+            <summary>
+            API版本
+            </summary>
+        </member>
+        <member name="F:DncEthic.WebAPI.SwaggerHelper.ApiVersions.V1">
+            <summary>
+            V1 版本
+            </summary>
+        </member>
+        <member name="F:DncEthic.WebAPI.SwaggerHelper.ApiVersions.V2">
+            <summary>
+            V2 版本
+            </summary>
+        </member>
+        <member name="T:DncEthic.WebAPI.SwaggerHelper.CustomRouteAttribute">
+            <summary>
+            自定义路由 /api/{version}/[controler]/[action]
+            </summary>
+        </member>
+        <member name="P:DncEthic.WebAPI.SwaggerHelper.CustomRouteAttribute.GroupName">
+            <summary>
+            分组名称,是来实现接口 IApiDescriptionGroupNameProvider
+            </summary>
+        </member>
+        <member name="M:DncEthic.WebAPI.SwaggerHelper.CustomRouteAttribute.#ctor(System.String)">
+            <summary>
+            自定义路由构造函数，继承基类路由
+            </summary>
+            <param name="actionName"></param>
+        </member>
+        <member name="M:DncEthic.WebAPI.SwaggerHelper.CustomRouteAttribute.#ctor(DncEthic.WebAPI.SwaggerHelper.ApiVersions,DncEthic.WebAPI.SwaggerHelper.ApiGroups,System.String)">
+            <summary>
+            自定义版本+路由构造函数，继承基类路由
+            </summary>
+            <param name="version"></param>
+            <param name="groupName"></param>
+            <param name="actionName"></param>
         </member>
     </members>
 </doc>

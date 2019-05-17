@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DncEthic.WebAPI.Log;
 using DncEthic.WebAPI.SwaggerHelper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -19,16 +20,28 @@ namespace DncEthic.WebAPI.Controllers
 
     public class ValuesController : ControllerBase
     {
-        /// <summary>
-        /// GET api/values
-        /// </summary>
-        /// <returns></returns>
-        //[ApiExplorerSettings(GroupName = "Platform")]
+            /// <summary>
+            /// GET api/values
+            /// </summary>
+            /// <returns></returns>
+            //[ApiExplorerSettings(GroupName = "Platform")]
         [CustomRoute(ApiVersions.V1,ApiGroups.Platform)]
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
+            NLogger.Error("发生未处理异常！");
+            try
+            {
+                object t = null;
+                t.ToString();
+            }
+            catch (Exception ex)
+            {
+                NLogger.Error(ex.Message);
+            }
+            //NLogger.Log(NLog.LogLevel.Error, "11", "出错啦！", "测试");
             return new string[] { "value1", "value2" };
+
         }
 
         /// <summary>

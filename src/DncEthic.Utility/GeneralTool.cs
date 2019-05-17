@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Http;
 
 namespace DncEthic.Utility
@@ -61,9 +62,9 @@ public class GeneralTool
         }
         #endregion
 
-        #region 将字符串转换为int类型数组
+        #region 将字符串转换为string类型数组
         /// <summary>
-        /// 将字符串转换为int类型数组
+        /// 将字符串转换为string类型数组
         /// </summary>
         /// <param name="str">如1,2,3,4,5</param>
         /// <returns></returns>
@@ -484,29 +485,6 @@ public class GeneralTool
 
         #endregion
 
-        #region 条形码解析
-        /// <summary>
-        /// 分解条形码，并返回数组
-        /// </summary>
-        /// <param name="code">条形码</param>
-        /// <returns>数组0=品牌  1=季节  2=款式  3=批次  4=尺码</returns>
-        public static List<string> GetSkuArray(string code)
-        {
-            var str = new List<string>();
-            //品牌，截取0-3
-            str.Add(code.Substring(0, 3));
-            //季节截取
-            str.Add(code.Substring(3, 1));
-            //款式截取
-            str.Add(code.Substring(4, 1));
-            //批次截取
-            str.Add(code.Substring(5, 1));
-            //尺码截取
-            str.Add(code.Substring(6, 1));
-            return str;
-        }
-        #endregion
-
         #region 上传配置
         /// <summary>
         ///  根据文件类型分配路径
@@ -653,52 +631,29 @@ public class GeneralTool
         #endregion
 
         #region 时间戳转换为日期（时间戳单位秒）
-        /// <summary>
-        /// 时间戳转换为日期（时间戳单位秒）
-        /// </summary>
-        /// <param name="TimeStamp"></param>
-        /// <returns></returns>
-        public static DateTime ConvertToDateTime(long timeStamp)
-        {
-            var dtStart = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1));
-            TimeSpan toNow = new TimeSpan(timeStamp);
-            return dtStart.Add(toNow);
-            //var start = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-            //return start.AddMilliseconds(timeStamp).AddHours(8);
-        }
-        /// <summary>
-        /// 日期转换为时间戳（时间戳单位秒）
-        /// </summary>
-        /// <param name="TimeStamp"></param>
-        /// <returns></returns>
-        public static long ConvertToTimeStamp(DateTime time)
-        {
-            DateTime Jan1st1970 = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-            return (long)(time.AddHours(-8) - Jan1st1970).TotalMilliseconds;
-        }
-        #endregion
-
-        #region  密码安全性验证
-        /// <summary>
-        /// 密码安全性验证
-        /// </summary>
-        /// <param name="pass"></param>
-        /// <returns></returns>
-        public static string PassSecurityValidation(string pass)
-        {
-            string Security = "弱";
-
-            if (pass.Length > 10)
-            {
-                Security = "强";
-            }
-            else if (pass.Length > 6)
-            {
-                Security = "中";
-            }
-            return Security;
-        }
-
+        ///// <summary>
+        ///// 时间戳转换为日期（时间戳单位秒）
+        ///// </summary>
+        ///// <param name="TimeStamp"></param>
+        ///// <returns></returns>
+        //public static DateTime ConvertToDateTime(long timeStamp)
+        //{
+        //    var dtStart = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1));
+        //    TimeSpan toNow = new TimeSpan(timeStamp);
+        //    return dtStart.Add(toNow);
+        //    //var start = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+        //    //return start.AddMilliseconds(timeStamp).AddHours(8);
+        //}
+        ///// <summary>
+        ///// 日期转换为时间戳（时间戳单位秒）
+        ///// </summary>
+        ///// <param name="TimeStamp"></param>
+        ///// <returns></returns>
+        //public static long ConvertToTimeStamp(DateTime time)
+        //{
+        //    DateTime Jan1st1970 = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+        //    return (long)(time.AddHours(-8) - Jan1st1970).TotalMilliseconds;
+        //}
         #endregion
 
         #region 检测模型下所有参数都为空 是否都为空

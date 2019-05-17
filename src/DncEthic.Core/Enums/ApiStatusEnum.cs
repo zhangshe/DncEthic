@@ -5,7 +5,7 @@ namespace DncEthic.Core.Enums
     /// <summary>
     /// 接口返回枚举
     /// </summary>
-    public enum ApiEnum
+    public enum ApiStatusEnum
     {
         /// <summary>
         /// 请求(或处理)成功
