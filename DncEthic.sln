@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DncEthic.Domain", "src\DncE
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DncEthic.Utility", "src\DncEthic.Utility\DncEthic.Utility.csproj", "{6F60C01F-C849-4EDF-83A7-4C98D13FA618}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DncEthic.Repository", "src\DncEthic.Repository\DncEthic.Repository.csproj", "{3BC02948-BFCB-4682-B773-ABABD22918A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{6F60C01F-C849-4EDF-83A7-4C98D13FA618}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F60C01F-C849-4EDF-83A7-4C98D13FA618}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F60C01F-C849-4EDF-83A7-4C98D13FA618}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BC02948-BFCB-4682-B773-ABABD22918A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BC02948-BFCB-4682-B773-ABABD22918A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BC02948-BFCB-4682-B773-ABABD22918A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BC02948-BFCB-4682-B773-ABABD22918A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +61,7 @@ Global
 		{7C8762A6-B06F-4892-BF73-2274C927E996} = {93F67040-EBA1-4DB7-BA5C-1417EAE317DC}
 		{2105030E-FB86-407D-AB18-032D65D376F7} = {93F67040-EBA1-4DB7-BA5C-1417EAE317DC}
 		{6F60C01F-C849-4EDF-83A7-4C98D13FA618} = {93F67040-EBA1-4DB7-BA5C-1417EAE317DC}
+		{3BC02948-BFCB-4682-B773-ABABD22918A8} = {93F67040-EBA1-4DB7-BA5C-1417EAE317DC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {23D4B46A-20A5-47E4-87C6-2A20F610531C}

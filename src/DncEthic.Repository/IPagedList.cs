@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DncEthic.Core.Repository
+namespace DncEthic.Repository
 {
     /// <summary>
     /// 分页接口

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 
-namespace DncEthic.Core.Repository
+namespace DncEthic.Repository
 {
     /// <summary>
     /// 分页组件实体类

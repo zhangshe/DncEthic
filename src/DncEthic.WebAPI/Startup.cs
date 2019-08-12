@@ -157,8 +157,8 @@ namespace DncEthic.WebAPI
             NLog.LogManager.LoadConfiguration("Nlog.config").GetCurrentClassLogger();
             //NLog.LogManager.Configuration.Variables["dbProvider"] = "MySql.Data.MySqlClient.MySqlConnection, MySql.Data";
             //NLog.LogManager.Configuration.Variables["dbConnection"] = "server=localhost;user id=root;pwd=123456;database=dncethic;SslMode = none;Charset=utf8";
-            //var t = ConfigManager.Configuration["NLogConfig:dbConnection"];
-            //var cc = ConfigManager.Configuration["NLogConfig:dbProvider"];
+            var t = ConfigManager.Configuration["NLogConfig:dbConnection"];
+            var cc = ConfigManager.Configuration["NLogConfig:dbProvider"];
             NLog.LogManager.Configuration.Variables["dbconnection"] = ConfigManager.Configuration["NLogConfig:dbConnection"];
             NLog.LogManager.Configuration.Variables["dbprovider"] = ConfigManager.Configuration["NLogConfig:dbProvider"];
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);  //避免日志中的中文输出乱码

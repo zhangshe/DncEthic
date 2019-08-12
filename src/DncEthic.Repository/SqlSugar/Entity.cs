@@ -3,9 +3,9 @@ using SqlSugar;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DncEthic.Core.Model
+namespace DncEthic.Repository.SqlSugar
 {
-   public class BaseEntity
+   public class Entity
     {
         /// <summary>
         /// 创建者ID

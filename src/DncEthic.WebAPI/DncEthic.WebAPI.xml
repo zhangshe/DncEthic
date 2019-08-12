@@ -41,6 +41,12 @@
             </summary>
             <param name="id"></param>
         </member>
+        <member name="M:DncEthic.WebAPI.Controllers.ValuesController.CreateEntity">
+            <summary>
+            生成实体类
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:DncEthic.WebAPI.Filter.GlobalExceptionFilter">
             <summary>
             全局异常过滤器

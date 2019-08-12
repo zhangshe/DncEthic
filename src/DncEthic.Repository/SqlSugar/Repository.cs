@@ -6,13 +6,13 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 
-namespace DncEthic.Core.Repository
+namespace DncEthic.Repository.SqlSugar
 {
     /// <summary>
     /// 仓储基类
     /// </summary>
     /// <typeparam name="TEntity">实体类型</typeparam>
-    public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class, new()
+    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class, new()
     {
         private DbContext _context;
         private SqlSugarClient _db;
@@ -41,7 +41,7 @@ namespace DncEthic.Core.Repository
             get { return _entityDb; }
             private set { _entityDb = value; }
         }
-        public BaseRepository()
+        public Repository()
         {
             #region 读取配置文件中的数据库连接配置
             string dbType = ConfigManager.Configuration["ConnectionStrings:DataType"];
@@ -500,6 +500,26 @@ namespace DncEthic.Core.Repository
         #endregion
 
 
+        #endregion
+
+        #region DbFirst 生成实体类
+        /// <summary>
+        /// 生成数据库下所有表的实体类到制定路径
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
+        public bool CreateEntity(string filePath)
+        {
+            try
+            {
+                _db.DbFirst.CreateClassFile(filePath, "DncEthic.Domain");
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
         #endregion
     }
 

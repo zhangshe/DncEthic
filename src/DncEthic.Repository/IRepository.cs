@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace DncEthic.Core.Repository
+namespace DncEthic.Repository
 {
     /// <summary>
     /// 异步的方式实现仓储
     /// </summary>
     /// <typeparam name="TEntity">实体对象</typeparam>
-    public interface IBaseRepository<TEntity> where TEntity : class
+    public interface IRepository<TEntity> where TEntity : class
     {
         #region 增
         /// <summary>
@@ -259,7 +259,17 @@ namespace DncEthic.Core.Repository
         /// <param name="OrderByFiledsExpression">排序表达式</param>
         /// <returns>自定义分页数据</returns>
         Task<PagedList<TEntity>> QueryPagedListAsync(string strWhere, int pageIndex = 1, int pageSize = 20,Expression<Func<TEntity, object>> OrderByFiledsExpression = null);
-        
+
         #endregion
+
+        #region DbFirst 生成实体类
+        /// <summary>
+        /// 生成数据库下所有表的实体类到制定路径
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
+        bool CreateEntity(string filePath);
+        #endregion
+
     }
 }

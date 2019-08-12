@@ -20,10 +20,10 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.7.8" />
-    <PackageReference Include="MySql.Data" Version="8.0.16" />
-    <PackageReference Include="NLog.Config" Version="4.6.3" />
-    <PackageReference Include="NLog.Web.AspNetCore" Version="4.8.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.7.12" />
+    <PackageReference Include="MySql.Data" Version="8.0.17" />
+    <PackageReference Include="NLog.Config" Version="4.6.6" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="4.8.4" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
   </ItemGroup>
 
@@ -38,12 +38,6 @@
   <ItemGroup>
     <Content Update="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Update="Nlog2.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Update="Nlog1.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 

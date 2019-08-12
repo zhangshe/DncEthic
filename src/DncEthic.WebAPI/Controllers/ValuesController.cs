@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using DncEthic.Core.Model;
+using DncEthic.Service.Interfaces;
 using DncEthic.WebAPI.Log;
 using DncEthic.WebAPI.SwaggerHelper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
 
 namespace DncEthic.WebAPI.Controllers
 {
@@ -20,12 +20,24 @@ namespace DncEthic.WebAPI.Controllers
 
     public class ValuesController : ControllerBase
     {
-            /// <summary>
-            /// GET api/values
-            /// </summary>
-            /// <returns></returns>
-            //[ApiExplorerSettings(GroupName = "Platform")]
-        [CustomRoute(ApiVersions.V1,ApiGroups.Platform)]
+        private readonly IEntityService entityService;
+        ///// <summary>
+        ///// 初始化
+        ///// </summary>
+        ///// <param name="_entityservice"></param>
+
+        public ValuesController(IEntityService _entityservice)
+        {
+            entityService = _entityservice;
+
+        }
+  
+        /// <summary>
+        /// GET api/values
+        /// </summary>
+        /// <returns></returns>
+        //[ApiExplorerSettings(GroupName = "Platform")]
+        [CustomRoute(ApiVersions.V1, ApiGroups.Platform)]
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
@@ -90,5 +102,27 @@ namespace DncEthic.WebAPI.Controllers
         public void Delete(int id)
         {
         }
+
+        #region 生成实体类
+        /// <summary>
+        /// 生成实体类
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [CustomRoute(ApiVersions.V1, ApiGroups.Platform)]
+        public JsonResult CreateEntity()
+        {
+            //return new JsonResult(entityService.CreateEntity(BaseConfigModel.ContentRootPath));
+            string[] arr = BaseConfigModel.ContentRootPath.Split('\\');
+            string baseFileProvider = "";
+            for (int i = 0; i < arr.Length - 1; i++)
+            {
+                baseFileProvider += arr[i];
+                baseFileProvider += "\\";
+            }
+            string filePath = baseFileProvider + "DncEthic.Domain";
+            return new JsonResult(entityService.CreateEntity(filePath));
+        }
+        #endregion
     }
 }
