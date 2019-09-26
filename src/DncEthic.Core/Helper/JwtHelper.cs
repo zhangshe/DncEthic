@@ -47,7 +47,7 @@ namespace DncEthic.Core.Helper
                     break;
             }
             var jwt = new JwtSecurityToken(
-                issuer: "UIDP",
+                issuer: "DncEthic",
                 claims: claims, //声明集合
                 expires: dateTime.AddMinutes(exp),
                 signingCredentials: creds);

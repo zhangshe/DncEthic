@@ -64,7 +64,7 @@ namespace DncEthic.WebAPI.Filter
             string message = $"----1.[客户端Ip]：{ clientIP} " + Environment.NewLine + $"----2.[请求方法]：{ strHttpMethod} " + Environment.NewLine + $"----3.[请求url]：{ url }" + Environment.NewLine + $"----4.[异常信息]：{exceptionMsg} " + Environment.NewLine + $"----5.[异常定位]：{exceptionPosition}";
 
             //nlog记录
-            NLogger.Error(ErrorLog(message, context.Exception));
+            //NLogger.Error(ErrorLog(message, context.Exception));
 
          
         }

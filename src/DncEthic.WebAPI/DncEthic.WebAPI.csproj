@@ -1,9 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
-    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
-    <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <UserSecretsId>87536e42-438f-4a37-ad8a-e0ec6aa57153</UserSecretsId>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -11,24 +11,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="ViewModel\**" />
-    <Content Remove="ViewModel\**" />
-    <EmbeddedResource Remove="ViewModel\**" />
-    <None Remove="ViewModel\**" />
+    <Folder Include="Controllers\Business\" />
+    <Folder Include="wwwroot\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.7.12" />
-    <PackageReference Include="MySql.Data" Version="8.0.17" />
-    <PackageReference Include="NLog.Config" Version="4.6.6" />
-    <PackageReference Include="NLog.Web.AspNetCore" Version="4.8.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.4.10" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Aggregation\" />
   </ItemGroup>
 
   <ItemGroup>

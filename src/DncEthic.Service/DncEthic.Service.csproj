@@ -1,18 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Folder Include="dto\" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\DncEthic.Core\DncEthic.Core.csproj" />
     <ProjectReference Include="..\DncEthic.Domain\DncEthic.Domain.csproj" />
     <ProjectReference Include="..\DncEthic.Repository\DncEthic.Repository.csproj" />
     <ProjectReference Include="..\DncEthic.Utility\DncEthic.Utility.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Implements\" />
+    <Folder Include="Interfaces\" />
   </ItemGroup>
 
 </Project>

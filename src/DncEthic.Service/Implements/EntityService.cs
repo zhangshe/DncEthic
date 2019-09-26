@@ -7,13 +7,16 @@ using System.Text;
 
 namespace DncEthic.Service.Implements
 {
-  public  class EntityService : Repository<Entity>, IEntityService
+  public  class EntityService:Repository<object>, IEntityService
     {
-        //private readonly IRepository<Entity> EntityRepository;
+        private readonly IRepository<Entity> _repository;
 
-        //public EntityService(IRepository<Entity> repository)
-        //{
-        //    EntityRepository = repository;
-        //}
+        public EntityService(IRepository<Entity> repository)
+        {
+            _repository = repository;
+        }
+        public EntityService()
+        {
+        }
     }
 }

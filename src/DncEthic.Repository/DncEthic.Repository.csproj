@@ -1,19 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="sqlSugarCore" Version="5.0.0.9" />
+    <PackageReference Include="sqlSugarCore" Version="5.0.0.10" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\DncEthic.Core\DncEthic.Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="EFCore\" />
   </ItemGroup>
 
 </Project>

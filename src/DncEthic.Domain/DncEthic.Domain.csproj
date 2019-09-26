@@ -1,15 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>D:\Project\DncEthic\src\DncEthic.Domain\DncEthic.Domain.xml</DocumentationFile>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Folder Include="Entity\" />
-  </ItemGroup>
 
 </Project>

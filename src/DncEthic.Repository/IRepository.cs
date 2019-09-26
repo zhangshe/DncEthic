@@ -270,6 +270,5 @@ namespace DncEthic.Repository
         /// <returns></returns>
         bool CreateEntity(string filePath);
         #endregion
-
     }
 }

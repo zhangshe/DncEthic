@@ -1,20 +1,19 @@
-﻿
-using DncEthic.Core.Helper;
-using DncEthic.WebAPI.Filter;
-using DncEthic.WebAPI.SwaggerHelper;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using NLog;
-using Swashbuckle.AspNetCore.Swagger;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
+using System.Threading.Tasks;
+using DncEthic.Core.Helper;
+using DncEthic.WebAPI.SwaggerHelper;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace DncEthic.WebAPI
 {
@@ -39,18 +38,15 @@ namespace DncEthic.WebAPI
         /// API名称
         /// </summary>
         private const string ApiName = "DncEthic";
+
         /// <summary>
         /// 服务注册配置应用程序的服务This method gets called by the runtime. Use this method to add services to the container.
         /// </summary>
         /// <param name="services">服务</param>
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc(o =>
-            {
-                // 全局异常过滤
-                o.Filters.Add(typeof(GlobalExceptionFilter));
-            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
             #region 添加Swagger
             var basePath = Microsoft.DotNet.PlatformAbstractions.ApplicationEnvironment.ApplicationBasePath;
             //var basePath = AppDomain.CurrentDomain.BaseDirectory;
@@ -144,25 +140,9 @@ namespace DncEthic.WebAPI
             #endregion
         }
 
-
-        /// <summary>
-        /// 创建应用程序的请求处理管道This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        /// </summary>
-        /// <param name="app"></param>
-        /// <param name="env"></param>
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            #region Nlog记日志
-            //将日志记录到数据库 config/NLog.config
-            NLog.LogManager.LoadConfiguration("Nlog.config").GetCurrentClassLogger();
-            //NLog.LogManager.Configuration.Variables["dbProvider"] = "MySql.Data.MySqlClient.MySqlConnection, MySql.Data";
-            //NLog.LogManager.Configuration.Variables["dbConnection"] = "server=localhost;user id=root;pwd=123456;database=dncethic;SslMode = none;Charset=utf8";
-            var t = ConfigManager.Configuration["NLogConfig:dbConnection"];
-            var cc = ConfigManager.Configuration["NLogConfig:dbProvider"];
-            NLog.LogManager.Configuration.Variables["dbconnection"] = ConfigManager.Configuration["NLogConfig:dbConnection"];
-            NLog.LogManager.Configuration.Variables["dbprovider"] = ConfigManager.Configuration["NLogConfig:dbProvider"];
-            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);  //避免日志中的中文输出乱码
-            #endregion
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -172,12 +152,16 @@ namespace DncEthic.WebAPI
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
+
+            #region 跨域设置
             app.UseCors(builder =>
             {
                 builder.AllowAnyHeader();
                 builder.AllowAnyMethod();
                 builder.AllowAnyOrigin();
             });
+            #endregion
+
             #region 添加Swagger
             app.UseSwagger();
             app.UseSwaggerUI(c =>
@@ -189,11 +173,11 @@ namespace DncEthic.WebAPI
                 var enumGroup = typeof(ApiGroups);
                 //根据分组名称倒序遍历展示
                 enumGroup.GetEnumNames().OrderByDescending(p => Convert.ToInt32(Enum.Parse(enumGroup, p))).ToList().ForEach(name =>
-                 {
-                     var value = Convert.ToInt32(Enum.Parse(enumGroup, name));
-                     string description = EnumExtension.GetDescription(enumGroup, value);
-                     c.SwaggerEndpoint($"/swagger/{name}/swagger.json", $"{description}");
-                 });
+                {
+                    var value = Convert.ToInt32(Enum.Parse(enumGroup, name));
+                    string description = EnumExtension.GetDescription(enumGroup, value);
+                    c.SwaggerEndpoint($"/swagger/{name}/swagger.json", $"{description}");
+                });
                 // 将swagger首页，设置成我们自定义的页面，记得这个字符串的写法：解决方案名.index.html
                 //c.IndexStream = () => GetType().GetTypeInfo().Assembly.GetManifestResourceStream("DncEthic.WebAPI.index.html");
                 c.RoutePrefix = ""; //路径配置，设置为空，表示直接在根域名（localhost:8001）访问该文件,注意localhost:8001/swagger是访问不到的，去launchSettings.json把launchUrl去掉
@@ -218,7 +202,6 @@ namespace DncEthic.WebAPI
             #endregion
 
             app.UseMvc();
-
         }
     }
 }

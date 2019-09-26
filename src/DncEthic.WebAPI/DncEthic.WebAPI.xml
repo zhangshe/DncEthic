@@ -4,6 +4,23 @@
         <name>DncEthic.WebAPI</name>
     </assembly>
     <members>
+        <member name="T:DncEthic.WebAPI.Controllers.PlatForm.EntityController">
+            <summary>
+            数据库实体类操作DBFirst
+            </summary>
+        </member>
+        <member name="M:DncEthic.WebAPI.Controllers.PlatForm.EntityController.#ctor(DncEthic.Service.Interfaces.IEntityService)">
+            <summary>
+            初始化
+            </summary>
+            <param name="_entityservice"></param>
+        </member>
+        <member name="M:DncEthic.WebAPI.Controllers.PlatForm.EntityController.CreateEntity">
+            <summary>
+            生成实体类
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:DncEthic.WebAPI.Controllers.ValuesController">
             <summary>
             测试API
@@ -40,12 +57,6 @@
             DELETE api/values/5
             </summary>
             <param name="id"></param>
-        </member>
-        <member name="M:DncEthic.WebAPI.Controllers.ValuesController.CreateEntity">
-            <summary>
-            生成实体类
-            </summary>
-            <returns></returns>
         </member>
         <member name="T:DncEthic.WebAPI.Filter.GlobalExceptionFilter">
             <summary>
@@ -97,6 +108,24 @@
             <summary>
             开发环境的消息
             </summary>
+        </member>
+        <member name="T:DncEthic.WebAPI.Filter.JwtAuthorizationFilter">
+            <summary>
+            授权中间件
+            </summary>
+        </member>
+        <member name="M:DncEthic.WebAPI.Filter.JwtAuthorizationFilter.#ctor(Microsoft.AspNetCore.Http.RequestDelegate)">
+            <summary>
+            
+            </summary>
+            <param name="next"></param>
+        </member>
+        <member name="M:DncEthic.WebAPI.Filter.JwtAuthorizationFilter.Invoke(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            
+            </summary>
+            <param name="httpContext"></param>
+            <returns></returns>
         </member>
         <member name="T:DncEthic.WebAPI.Log.LogEntity">
             <summary>
@@ -224,57 +253,6 @@
             
             </summary>
         </member>
-        <member name="T:DncEthic.WebAPI.Log.NLogger">
-            <summary>
-            日志操作类
-            </summary>
-        </member>
-        <member name="F:DncEthic.WebAPI.Log.NLogger.DefaultUser">
-            <summary>
-            数据错误无法获取用户时使用
-            </summary>
-        </member>
-        <member name="F:DncEthic.WebAPI.Log.NLogger.DefaultIP">
-            <summary>
-            默认地址
-            </summary>
-        </member>
-        <member name="M:DncEthic.WebAPI.Log.NLogger.Debug(System.String)">
-            <summary>
-            调试
-            </summary>
-            <param name="debug"></param>
-        </member>
-        <member name="M:DncEthic.WebAPI.Log.NLogger.Info(System.String)">
-            <summary>
-            信息
-            </summary>
-            <param name="info"></param>
-        </member>
-        <member name="M:DncEthic.WebAPI.Log.NLogger.Warn(System.String)">
-            <summary>
-            警告
-            </summary>
-            <param name="warn"></param>
-        </member>
-        <member name="M:DncEthic.WebAPI.Log.NLogger.Error(System.String)">
-            <summary>
-            错误
-            </summary>
-            <param name="error"></param>
-        </member>
-        <member name="M:DncEthic.WebAPI.Log.NLogger.Fatal(System.String)">
-            <summary>
-            严重错误
-            </summary>
-            <param name="fatal"></param>
-        </member>
-        <member name="M:DncEthic.WebAPI.Log.NLogger.Trace(System.String)">
-            <summary>
-            跟踪
-            </summary>
-            <param name="trace"></param>
-        </member>
         <member name="T:DncEthic.WebAPI.Program">
             <summary>
             程序入口
@@ -319,13 +297,6 @@
             服务注册配置应用程序的服务This method gets called by the runtime. Use this method to add services to the container.
             </summary>
             <param name="services">服务</param>
-        </member>
-        <member name="M:DncEthic.WebAPI.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
-            <summary>
-            创建应用程序的请求处理管道This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-            </summary>
-            <param name="app"></param>
-            <param name="env"></param>
         </member>
         <member name="T:DncEthic.WebAPI.SwaggerHelper.ApiGroups">
             <summary>
